@@ -23,6 +23,18 @@ function App(): JSX.Element {
     setTasks(newTasks)
   }
 
+  const toggleDoneTask = (i: number) => {
+    const newTasks: MyTask[] = [...tasks];
+    newTasks[i].done = !newTasks[i].done; 
+    setTasks(newTasks);
+  }
+
+  const removeTask = (i: number): void => {
+    const newTasks: MyTask[] = [...tasks];
+    newTasks.splice(i,1);
+    setTasks(newTasks);
+  }
+
   return (
     <div className="container p-4">
       <div className="row">
@@ -40,10 +52,21 @@ function App(): JSX.Element {
           </form>
         </div>
       </div>
+
       {tasks.map((task: MyTask, i: number) => (
           <div className="card card-body mt-2" key={i}>
             <h2 style={{textDecoration: task.done ? 'line-through' : ''}}>{task.name}</h2>
-            <p>{task.done}</p>
+            <div>
+            <button className="btn btn-outline-primary" onClick={() => toggleDoneTask(i)}>
+              {task.done ? '✔' : '➔'}
+            </button>
+            <button 
+            className="btn btn-outline-danger m-3" 
+            onClick={() => removeTask(i)}
+            >
+            🗑️
+            </button>
+            </div>
           </div>
           ))}
         </div>
