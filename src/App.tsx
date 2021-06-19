@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { forEachTrailingCommentRange } from 'typescript';
 import { Card } from './components/Cards/Card';
 import { OperationModal } from './components/OperationModal/OperationModal'
-
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 
@@ -12,14 +13,14 @@ interface MyTask {
 
 function App(): JSX.Element {
 
-  const [newTask, setNewTask] = useState<string>('')
+  //const [newTask, setNewTask] = useState<string>('')
   const [tasks, setTasks] = useState<MyTask[]>([])
   const [openModal, setOpenModal] = useState<boolean>(false)
 
   const handleSubmit = (event: FormElement) => {
     event.preventDefault();
-    addTask(newTask);
-    setNewTask('');
+    /**addTask(newTask);
+    setNewTask('');*/
   }
 
   const handleCloseModal = () => {
@@ -43,21 +44,28 @@ function App(): JSX.Element {
     setTasks(newTasks);
   }
 
+  const populateTaskList = (task: [MyTask]) => {
+    setTasks(task)
+
+  }
+  useEffect(() => {
+    axios.get('http://localhost:8888/task')
+  .then(res => {
+
+    populateTaskList(res.data);
+
+  }).catch(e => console.log('error', e));
+
+  },[]);
+  
+
   return (
     <div className="container p-4">
       <div className="row">
         <div className="col-md-6 offset-md-3">
         <div className="card">
         <div className="card-body">
-          <form onSubmit={handleSubmit}>
-            <input type="text"
-              onChange={event => setNewTask(event.target.value)}
-              value={newTask}
-              className="form-control"
-              autoFocus
-              />
-            <button className="btn btn-outline-success btn-block mt-3">Create task</button>
-          </form>
+
         </div>
       </div>
 
