@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Card } from './components/Cards/Card';
+import { OperationModal } from './components/OperationModal/OperationModal'
+
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 
@@ -11,11 +14,16 @@ function App(): JSX.Element {
 
   const [newTask, setNewTask] = useState<string>('')
   const [tasks, setTasks] = useState<MyTask[]>([])
+  const [openModal, setOpenModal] = useState<boolean>(false)
 
   const handleSubmit = (event: FormElement) => {
     event.preventDefault();
     addTask(newTask);
     setNewTask('');
+  }
+
+  const handleCloseModal = () => {
+    setOpenModal(false)
   }
 
   const addTask = (name: string) => {
@@ -53,23 +61,19 @@ function App(): JSX.Element {
         </div>
       </div>
 
-      {tasks.map((task: MyTask, i: number) => (
-          <div className="card card-body mt-2" key={i}>
-            <h2 style={{textDecoration: task.done ? 'line-through' : ''}}>{task.name}</h2>
-            <div>
-            <button className="btn btn-outline-primary" onClick={() => toggleDoneTask(i)}>
-              {task.done ? '✔' : '➔'}
-            </button>
-            <button 
-            className="btn btn-outline-danger m-3" 
-            onClick={() => removeTask(i)}
-            >
-            🗑️
-            </button>
-            </div>
-          </div>
-          ))}
-        </div>
+      { openModal && <OperationModal closeFunction={handleCloseModal}/> }
+      <button onClick={() => setOpenModal(true)}>
+        Create Task
+      </button>
+
+      {tasks.map((task: MyTask, i: number) => <Card 
+      task={{name: task.name, done: task.done}} 
+      index={i} 
+      toggleDoneTask={toggleDoneTask}
+      removeTask={removeTask}
+      />
+      )}
+      </div>
       </div>
     </div>
   );
