@@ -14,8 +14,13 @@
 }
 
 .modalContent {
-    background-color: white;
+    background-color: rgb(29, 99, 165);
     width: 50%;
     height: 300px;
     padding: 20px;
+    border-radius: 2px;
+}
+
+h4 {
+    color: rgb(2, 3, 3);
 }

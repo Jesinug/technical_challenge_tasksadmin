@@ -63,14 +63,10 @@ function App(): JSX.Element {
     <div className="container p-4">
       <div className="row">
         <div className="col-md-6 offset-md-3">
-        <div className="card">
-        <div className="card-body">
 
-        </div>
-      </div>
 
       { openModal && <OperationModal closeFunction={handleCloseModal}/> }
-      <button onClick={() => setOpenModal(true)}>
+      <button className="btn btn-link" onClick={() => setOpenModal(true)}>
         Create Task
       </button>
 
@@ -84,6 +80,7 @@ function App(): JSX.Element {
       </div>
       </div>
     </div>
+  
   );
 }
 
