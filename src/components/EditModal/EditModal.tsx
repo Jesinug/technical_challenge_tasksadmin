@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import './EditModal.css';
 import axios from "axios";
+import { useAppState } from "../../AppContext";
 
 interface EditModalProps {
 
@@ -19,7 +20,9 @@ export const EditModal = (props: EditModalProps) => {
         'priority':priority
     });
 
-    const onTextfieldChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const {requestTasks} = useAppState();
+
+    const onTextfieldChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const reqTaskVar = {...task};
         // @ts-ignore
         reqTaskVar[event.target.id] = event.target.value;
@@ -31,17 +34,19 @@ export const EditModal = (props: EditModalProps) => {
         axios.put(`http://localhost:3000/task/${id}`, task)
             .then(() => {
                 props.closeFunction()
+                requestTasks()
             }).catch(e => console.log('error', e));
     }
 
     return (
         <div className="modalContainer">
             <div className="modalContent">
-                <h4>Edita Task</h4>
+                <h4>Edit Task</h4>
                 <div className="form-group">
                     <label className="form-label mt-4">Description</label>
-                    <textarea value={task.name} className="form-control" id="name" onChange={onTextfieldChange} ></textarea>
-                    <textarea value={task.priority} className="form-control" id="priority" onChange={onTextfieldChange} ></textarea>
+                    
+                    <input value={task.name} className="form-control my-2" id="name" onChange={onTextfieldChange} ></input>
+                    <input type="number" value={task.priority} className="form-control my-2" id="priority" onChange={onTextfieldChange} ></input>
                 </div>
                 <button className="btn btn-light m-3" onClick={() => props.closeFunction()}>Cancel</button>
                 <button className="btn btn-success" onClick={saveData} >Save</button>

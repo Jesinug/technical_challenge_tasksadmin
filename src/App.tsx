@@ -1,22 +1,19 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { AppContext } from './AppContext';
 import { Card } from './components/Cards/Card';
-import { OperationModal } from './components/OperationModal/OperationModal'
+import { MyTask } from './components/Models/Tasks';
+import { OperationModal } from './components/OperationModal/OperationModal';
+
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 
-interface MyTask {
-  name: string;
-  id: number;
-  priority: number
-}
 
 function App(): JSX.Element {
 
   //const [newTask, setNewTask] = useState<string>('')
   const [tasks, setTasks] = useState<MyTask[]>([])
   const [openModal, setOpenModal] = useState<boolean>(false)
-
 
 
   const handleCloseModal = () => {
@@ -31,20 +28,28 @@ function App(): JSX.Element {
 
   const populateTaskList = (task: [MyTask]) => {
     setTasks(task)
-
   }
-  useEffect(() => {
-    axios.get('http://localhost:3000/task')
-  .then(res => {
-
-    populateTaskList(res.data);
-
-  }).catch(e => console.log('error', e));
-
-  },[]);
+  useEffect(() => {requestTasks()},[]);
   
+  const requestTasks = () => {
+    axios.get('http://localhost:3000/task')
+    .then(res => {
+  
+      populateTaskList(res.data);
+  
+    }).catch(e => console.log('error', e));
+  }
 
   return (
+    <AppContext.Provider
+            value={{
+              openModal,
+              setOpenModal,
+              tasks,
+              setTasks,
+              requestTasks
+            }}>
+
     <div className="container p-4">
       <div className="row">
         <div className="col-md-6 offset-md-3">
@@ -64,7 +69,8 @@ function App(): JSX.Element {
       </div>
       </div>
     </div>
-  
+
+    </AppContext.Provider>
   );
 }
 

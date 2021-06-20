@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useAppState } from "../../AppContext";
 import './OperationModal.css';
 
 interface OperationModalProps {
@@ -11,6 +12,7 @@ export const OperationModal = (props: OperationModalProps) => {
         'name': '',
         'priority': ''
     })
+    const {requestTasks} = useAppState();
 
     const onTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setTask({
@@ -23,6 +25,7 @@ export const OperationModal = (props: OperationModalProps) => {
         axios.post('http://localhost:3000/task', task)
         .then(() => {
             props.closeFunction()
+            requestTasks()
         }).catch(e => console.log(e))
     }
 

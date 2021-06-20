@@ -1,24 +1,14 @@
 {
   "task": [
     {
-      "name": "React cliente side",
-      "priority": 1,
-      "id": 2
-    },
-    {
-      "id": 4,
-      "name": "Use asynchronous views on templates",
-      "priority": 1
-    },
-    {
       "id": 6,
       "name": "TDD & Documentation",
       "priority": 1
     },
     {
-      "id": 7,
       "name": "Search bar to filter by any field",
-      "priority": 2
+      "priority": 2,
+      "id": 7
     },
     {
       "id": 9,
