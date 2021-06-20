@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { forEachTrailingCommentRange } from 'typescript';
 import { Card } from './components/Cards/Card';
 import { OperationModal } from './components/OperationModal/OperationModal'
 
@@ -8,7 +7,8 @@ type FormElement = React.FormEvent<HTMLFormElement>;
 
 interface MyTask {
   name: string;
-  done: boolean;
+  id: number;
+  priority: number
 }
 
 function App(): JSX.Element {
@@ -17,25 +17,10 @@ function App(): JSX.Element {
   const [tasks, setTasks] = useState<MyTask[]>([])
   const [openModal, setOpenModal] = useState<boolean>(false)
 
-  const handleSubmit = (event: FormElement) => {
-    event.preventDefault();
-    /**addTask(newTask);
-    setNewTask('');*/
-  }
+
 
   const handleCloseModal = () => {
     setOpenModal(false)
-  }
-
-  const addTask = (name: string) => {
-    const newTasks: MyTask[] = [...tasks, { name, done: false }]
-    setTasks(newTasks)
-  }
-
-  const toggleDoneTask = (i: number) => {
-    const newTasks: MyTask[] = [...tasks];
-    newTasks[i].done = !newTasks[i].done; 
-    setTasks(newTasks);
   }
 
   const removeTask = (i: number): void => {
@@ -49,7 +34,7 @@ function App(): JSX.Element {
 
   }
   useEffect(() => {
-    axios.get('http://localhost:8888/task')
+    axios.get('http://localhost:3000/task')
   .then(res => {
 
     populateTaskList(res.data);
@@ -71,10 +56,9 @@ function App(): JSX.Element {
       </button>
 
       {tasks.map((task: MyTask, i: number) => <Card 
-      task={{name: task.name, done: task.done}} 
+      task={{name: task.name, id: task.id, priority: task.priority}} 
       index={i} 
-      toggleDoneTask={toggleDoneTask}
-      removeTask={removeTask}
+      tasks={tasks}
       />
       )}
       </div>

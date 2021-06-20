@@ -1,29 +1,45 @@
 {
-    "task": [
-        {
-            "id": 1,
-            "name": "Create React App",
-            "storyPoint": 1
-        },
-        {
-            "id": 2,
-            "name": "Create React App2",
-            "storyPoint": 5
-        },
-        {
-            "id": 3,
-            "name": "Create React App3",
-            "storyPoint": 2
-        },
-        {
-            "id": 4,
-            "name": "Create React App4",
-            "storyPoint": 2
-        },
-        {
-            "id": 5,
-            "name": "Create React App5",
-            "storyPoint": 3
-        }
-    ]
+  "task": [
+    {
+      "name": "React cliente side MODIF",
+      "priority": 1,
+      "id": 2
+    },
+    {
+      "id": 4,
+      "name": "Use asynchronous views on templates",
+      "priority": 1
+    },
+    {
+      "id": 5,
+      "name": "Use some state Manager",
+      "priority": 1
+    },
+    {
+      "id": 6,
+      "name": "TDD & Documentation",
+      "priority": 1
+    },
+    {
+      "id": 7,
+      "name": "Search bar to filter by any field",
+      "priority": 2
+    },
+    {
+      "id": 9,
+      "name": "Display one item on showcase format",
+      "priority": 1
+    },
+    {
+      "id": 10,
+      "name": "Unit testing",
+      "priority": 3
+    },
+    {
+      "name": [
+        "Download sass"
+      ],
+      "id": 11
+    }
+  ]
 }
