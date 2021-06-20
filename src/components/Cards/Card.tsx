@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
+
 import {EditModal} from '../EditModal/EditModal'
 
 interface CardProps {
@@ -37,18 +38,25 @@ export const Card = (props: CardProps): JSX.Element => {
         <div className="card card-body mt-2" key={index}>
             <h2 >{task.name}</h2>
 
-            <div>
-                <Button onClick={handleDelete} color="secondary">
-                    delete
-                </Button>
+            <div className="card-container">
+            <Button className="btn" size="small" onClick={handleDelete} variant="contained" color="secondary">
+                DELETE
+            </Button>
+ 
                 { openModal && <EditModal closeFunction={handleCloseModal} 
                 id={task.id} 
                 name={task.name} 
-                priority={task.priority}/> }
+                priority={task.priority}/> 
+                }
             
-                <Button onClick={() => setOpenModal(true)} color="primary">
+                <Button className="btn" size="small" onClick={() => setOpenModal(true)} variant="contained" color="primary">
                     Edit
                 </Button>
+
+                <span className="badge bg-dark m-6">
+                    {task.priority}
+                </span>
+
             </div>
         </div>
     )

@@ -1,18 +1,13 @@
 {
   "task": [
     {
-      "name": "React cliente side MODIF",
+      "name": "React cliente side",
       "priority": 1,
       "id": 2
     },
     {
       "id": 4,
       "name": "Use asynchronous views on templates",
-      "priority": 1
-    },
-    {
-      "id": 5,
-      "name": "Use some state Manager",
       "priority": 1
     },
     {
@@ -34,12 +29,6 @@
       "id": 10,
       "name": "Unit testing",
       "priority": 3
-    },
-    {
-      "name": [
-        "Download sass"
-      ],
-      "id": 11
     }
   ]
 }
