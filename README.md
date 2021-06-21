@@ -4,7 +4,7 @@ I finished my fulltime bootcamp in web development a little less than a month ag
 
 I know that the only way to learn to code is to code. This way, I know that I will be able to deepen my resources and create more and more challenging digital products.
 
-##Task App
+## Task App
 
 This application is a tool that helps to prioritize instructions to perform technical tests, such as the one I had to perform to develop it.
 It is a task manager that allows you to create, prioritize, edit and delete tasks.
