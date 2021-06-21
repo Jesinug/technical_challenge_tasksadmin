@@ -5,6 +5,7 @@ import { DeleteModal } from "../DeleteModal/DeleteModal";
 import {EditModal} from '../EditModal/EditModal'
 import { useAppState } from "../../AppContext";
 import './Card.css'
+import { MyTask } from "../Models/Tasks";
 
 interface CardProps {
     task: {
@@ -16,11 +17,6 @@ interface CardProps {
     index: number;
 }
 
-interface MyTask {
-    name: string;
-    priority: number;
-    id: number
-}
 
 export const Card = (props: CardProps): JSX.Element => {
     const {task, index, tasks, } = props

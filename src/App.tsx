@@ -6,8 +6,6 @@ import { MyTask } from './components/Models/Tasks';
 import { OperationModal } from './components/OperationModal/OperationModal';
 
 
-type FormElement = React.FormEvent<HTMLFormElement>;
-
 
 function App(): JSX.Element {
 
@@ -18,12 +16,6 @@ function App(): JSX.Element {
 
   const handleCloseModal = () => {
     setOpenModal(false)
-  }
-
-  const removeTask = (i: number): void => {
-    const newTasks: MyTask[] = [...tasks];
-    newTasks.splice(i,1);
-    setTasks(newTasks);
   }
 
   const populateTaskList = (task: [MyTask]) => {
