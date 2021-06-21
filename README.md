@@ -47,5 +47,7 @@ The page will reload if you create, delete or modify any task.
 
 ## TEST APP
 During the bootcamp we became familiar with Jasmine as a testing tool. Although we did not write tests with Jasmine, we were able to appreciate its code.
-From this moment I was able to apply basic tests with Jest. These are unit tests, located in each component folder. I understand that Testing is a key concept to develop better and better. That is why I wanted to sketch a line in this regard, which, without being a testing strategy or much less, if it enables refactoring possibilities.
+From this moment I was able to apply basic tests. These are unit tests, located in each component folder. I understand that Testing is a key concept to develop better and better. That is why I wanted to sketch a line in this regard, which, without being a testing strategy or much less, if it enables refactoring possibilities.
+
+### `yarn start`
 
