@@ -1,11 +1,11 @@
 import { createContext, useContext } from 'react'
-import { MyTask } from './components/Models/Tasks';
+import { Task } from './components/Models/Tasks';
 
 interface AppState {
     openModal: boolean;
     setOpenModal: (openModal: boolean) => void;
-    tasks: MyTask[];
-    setTasks: (tasks: MyTask[]) => void;
+    tasks: Task[];
+    setTasks: (tasks: Task[]) => void;
     requestTasks: () => void
 }
 

@@ -1,25 +1,26 @@
+
+
 import React, { useState } from "react";
-import './EditModal.css';
+import './CreateModal.css';
 import { useAppState } from "../../AppContext";
-import { updateTask } from "../../services/tasks";
+import { createTask as requestCreateTask } from "../../services/tasks";
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-import { EditModalProps } from './EditModalProps';
+import { CreateModalProps } from './CreateModalProps';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
-export const EditModal = (props: EditModalProps) => {
+export const CreateModal = (props: CreateModalProps) => {
 
-    const { name, priority, id, handleClose, open } = props;
+    const { handleClose, open } = props;
 
     const [task, setTask] = useState(() => (
         {
-            id: id,
-            name: name,
-            priority: priority
+            name: '',
+            priority: 1
         }
     ));
 
@@ -29,8 +30,8 @@ export const EditModal = (props: EditModalProps) => {
         setTask({ ...task, [event.target.id]: event.target.value })
     };
 
-    const saveData = () => {
-        updateTask(task)
+    const createTask = () => {
+        requestCreateTask(task)
             .then(() => {
                 handleClose()
                 requestTasks()
@@ -43,22 +44,22 @@ export const EditModal = (props: EditModalProps) => {
             onClose={props.handleClose}
 
         >
-            <DialogTitle>Edit task</DialogTitle>
+            <DialogTitle>NEW TASK</DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    Please change the following fields to update the task
+                    Please change the following fields to create a new task
                 </DialogContentText>
                 <div className='modal-container'>
-                    <TextField variant='filled' value={task.name} id="name" onChange={onTextfieldChange} />
-                    <TextField variant='filled' value={task.priority} id="priority" type='number' onChange={onTextfieldChange} />
+                    <TextField variant='filled' label='Name' placeholder='Create pipeline for deploy' id="name" onChange={onTextfieldChange} />
+                    <TextField variant='filled' label='Priority' value={task.priority} id="priority" type='number' onChange={onTextfieldChange} />
                 </div>
             </DialogContent>
             <DialogActions>
                 <Button onClick={props.handleClose} color="primary">
                     Cancel
                 </Button>
-                <Button onClick={saveData} color="primary" autoFocus>
-                    Edit
+                <Button onClick={createTask} color="primary" autoFocus>
+                    Create
                 </Button>
             </DialogActions>
         </Dialog>
