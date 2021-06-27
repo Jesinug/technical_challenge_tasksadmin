@@ -1,4 +1,4 @@
-# A task organizer por code newbies
+# A task organizer for code newbies
 
 ## Before starting, just a bit of context
 Hi all, Im Jesica.
