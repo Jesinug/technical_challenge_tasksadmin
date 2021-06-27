@@ -1,4 +1,4 @@
-# A task organizer for code newbies
+# A task organizer for code newbies ✔ 🐱‍👤
 
 ## Before starting, just a bit of context
 Hi all, Im Jesica.
@@ -9,33 +9,34 @@ I know that the only way to learn to code is to code. This way, I know that I wi
 
 ## The app
 I thought of this application to help those who, like me, are facing the first technical tests in selection processes.
-Its function is to help code newbies to deconstruct big problems to put together small ones.
+The idea and aim behind it is to help code newbies to deconstruct big problems to put together small ones.
 
 ## MVP and app main feature
 As MVP I focused on a basic functionality of creating/saving/editing/deleting tasks and assigning priority level.
-- Read your list of tasks 
 - Create a task
 - Asigne priority level at a task 
-- Edit a task and it's priority
+- Read your list of tasks 
+- Edit a task
 - Delete a task
 
-## Priority chart
-- (1) --> High prio
-- (3) --> Middle prio
-- (4) --> Low prio
+### Priority chart
+- **(1)** --> High prio
+- **(3)** --> Middle prio
+- **(4)** --> Low prio
 
-## Tech stack used
-React and Typescript.
-Material UI library
+### Tech stack used
+- React 
+- Typescript
+- JSON-Server (to mock API)
+- Material UI library
 
-## Before to start
+# Settings
 Install Yarn in your local machine [https://yarnpkg.com/lang/en/docs/install/](https://yarnpkg.com/lang/en/docs/install/)
 
-## 1. You need install app dependencies
-In the project directory, you can run:
+### 1. Install app dependencies in project directory running:
 ### `yarn install`
 
-## 2. And Run the app (In mac or Linux)
+### 2. ... And run the app (In mac or Linux) with:
 ### `yarn start`
 
 Runs the app with JSON-SERVER to mock API\
