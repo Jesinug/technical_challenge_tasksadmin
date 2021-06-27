@@ -6,9 +6,9 @@
       "priority": 1
     },
     {
-      "name": "Search bar to filter by any field",
-      "priority": 2,
-      "id": 7
+      "id": 7,
+      "name": "Build filter by any field feature",
+      "priority": "1"
     },
     {
       "id": 9,
@@ -16,9 +16,29 @@
       "priority": 1
     },
     {
-      "id": 10,
-      "name": "Unit testing",
-      "priority": 3
+      "name": "Sudocode in paper",
+      "priority": "1",
+      "id": 10
+    },
+    {
+      "name": "Delete former UI library",
+      "priority": "2",
+      "id": 11
+    },
+    {
+      "name": "Improve README",
+      "priority": "2",
+      "id": 12
+    },
+    {
+      "name": "Research bug of materialui/cyborg theme",
+      "priority": "1",
+      "id": 13
+    },
+    {
+      "name": "Build display tasks by priority",
+      "priority": "1",
+      "id": 14
     }
   ]
 }
