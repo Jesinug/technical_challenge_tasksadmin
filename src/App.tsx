@@ -6,6 +6,7 @@ import { getTasks } from "./services/tasks";
 import { CreateModal } from "./components/CreateModal/CreateModal";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
+import { SearchBar } from "./components/SearchBar/SearchBar";
 
 function App(): JSX.Element {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -14,6 +15,8 @@ function App(): JSX.Element {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+
+
 
   const populateTaskList = (task: [Task]) => {
     setTasks(task);
@@ -30,15 +33,17 @@ function App(): JSX.Element {
       .catch((e) => console.log("error", e));
   };
 
+
   const renderTaskCards = () => {
     return tasks.map((task: Task, i: number) => (
       <Card
-        task={{ name: task.name, id: task.id, priority: task.priority }}
-        index={i}
-        tasks={tasks}
-      />
+      task={{ name: task.name, id: task.id, priority: task.priority }}
+      index={i}
+      tasks={tasks}
+    />
     ));
   };
+
   return (
     <AppContext.Provider
       value={{
@@ -58,8 +63,10 @@ function App(): JSX.Element {
           >
             New Task
           </Button>
+          <SearchBar />
           {renderTaskCards()}
         </div>
+        
         <CreateModal open={openModal} handleClose={handleCloseModal} />
       </>
     </AppContext.Provider>

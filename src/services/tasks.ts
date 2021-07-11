@@ -7,6 +7,7 @@ interface NewTask {
     name: string;
     priority: number;
 }
+
 export const getTasks = () => {
     return axios.get(`${API_URL}/task`);
 }

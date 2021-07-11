@@ -35,6 +35,7 @@ export const Card = (props: CardProps): JSX.Element => {
                 requestTasks()
             }).catch(e => console.log('error', e));
     }
+    
     const closeDeleteModal = () => {
         setOpenDeleteModal(false)
     }
@@ -48,7 +49,6 @@ export const Card = (props: CardProps): JSX.Element => {
                 name={task.name}
                 priority={task.priority} />
         );
-
     }
 
     const renderDeleteModal = () => {
